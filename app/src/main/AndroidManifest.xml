@@ -7,7 +7,16 @@
     <uses-permission android:name="android.permission.RESOURCE_VIDEO_CAPTURE" />
     <uses-feature android:name="android.hardware.camera" />
 
+    <!-- media file authorization -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+
+
+
     <application
+        android:name=".GlobalApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -34,6 +43,21 @@
 
 
         <activity android:name=".MainActivity" />
+
+        <!--moonwon for KAKAO LOGIN API ACTIVITY-->
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
+                <data android:host="oauth"
+                    android:scheme="kakao$64814046336890559c67add90c3aca76" />
+            </intent-filter>
+        </activity>
 
         <!--<activity
             android:name=".MainActivity"
