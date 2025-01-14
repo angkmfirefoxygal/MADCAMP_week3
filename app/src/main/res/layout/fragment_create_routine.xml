@@ -1,0 +1,132 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="16dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="운동 루틴 생성"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="4dp"
+        android:layout_margin="10dp"
+        android:text="새로운 루틴 생성"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#333333"
+        android:background="@drawable/rounded_background" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="👍 message: 주 3일 운동 완료! 앙뇽뇽!"
+        android:layout_marginBottom="4dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="👎 message: 주 0일 운동... 왕심쿵.."
+        android:layout_marginBottom="16dp" />
+
+    <!-- Exercise Selection -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="추가할 운동 선택"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupExercises"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스쿼트"
+            android:checkable="true"
+            app:chipBackgroundColor="@color/chip_background_selector"
+            android:textColor="@color/chip_text_selector" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="푸쉬업"
+            android:checkable="true"
+            app:chipBackgroundColor="@color/chip_background_selector"
+            android:textColor="@color/chip_text_selector" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="플랭크"
+            android:checkable="true"
+            app:chipBackgroundColor="@color/chip_background_selector"
+            android:textColor="@color/chip_text_selector" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="런지"
+            android:checkable="true"
+            app:chipBackgroundColor="@color/chip_background_selector"
+            android:textColor="@color/chip_text_selector" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- Difficulty Level Selection -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="운동 강도 선택"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+    <com.google.android.material.slider.Slider
+        android:id="@+id/difficultySlider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:valueFrom="0"
+        android:valueTo="2"
+        android:stepSize="1"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/selectedDifficultyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="선택한 강도: 중"
+        android:layout_marginBottom="16dp"
+        android:textSize="14sp" />
+
+    <!-- Selected Information -->
+    <TextView
+        android:id="@+id/selectedExercisesText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="선택한 운동: "
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Create Routine Button -->
+    <Button
+        android:id="@+id/createRoutineButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="루틴 생성"
+        android:background="@drawable/rounded_button_background" />
+</LinearLayout>

@@ -43,6 +43,7 @@
 
 
         <activity android:name=".MainActivity" />
+        <activity android:name=".SquatTracker" />
 
         <!--moonwon for KAKAO LOGIN API ACTIVITY-->
         <activity
