@@ -1,5 +1,7 @@
 package com.posetrackerdemo
 
+//import CreateRoutineFragment
+//import CreateRoutineFragment
 import CreateRoutineFragment
 import PastRoutinesFragment
 import android.os.Bundle
@@ -8,6 +10,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.posetrackerdemo.ui.home.HomeFragment
 import com.posetrackerdemo.ui.my.MyFragment
+//import com.posetrackerdemo.ui.tab2.CreateRoutineFragment
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             val fragment: Fragment = when (item.itemId) {
                 R.id.nav_home -> HomeFragment()
                 R.id.nav_routines -> PastRoutinesFragment()
-                R.id.nav_create_routine -> CreateRoutineFragment() // Tab2를 CreateRoutineFragment로 변경
+                R.id.nav_create_routine -> CreateRoutineFragment()
                 R.id.nav_tab3 -> MyFragment()
                 else -> HomeFragment()
             }

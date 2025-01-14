@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.posetrackerdemo.ui.home.HomeFragment
 import com.posetrackerdemo.ui.my.MyFragment
+//import com.posetrackerdemo.ui.tab2.CreateRoutineFragment
 
 class ViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
     override fun getItemCount(): Int = 4
