@@ -5,6 +5,7 @@ import PastRoutinesFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.posetrackerdemo.ui.home.HomeFragment
 import com.posetrackerdemo.ui.my.MyFragment
 
 class ViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity) {
@@ -12,9 +13,10 @@ class ViewPagerAdapter(activity: FragmentActivity) : FragmentStateAdapter(activi
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> CreateRoutineFragment()
+            0 -> HomeFragment()
             1 -> PastRoutinesFragment()
-            2 -> MyFragment()
+            2 -> CreateRoutineFragment()
+            3 -> MyFragment()
             else -> throw IllegalStateException("Invalid position")
         }
     }
