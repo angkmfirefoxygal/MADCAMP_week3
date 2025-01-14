@@ -140,6 +140,6 @@
         android:textColor="#333333"
         android:textStyle="bold"
         android:layout_marginTop="120dp"/>
-</LinearLayout>에러
+</LinearLayout>
 
 </FrameLayout>
