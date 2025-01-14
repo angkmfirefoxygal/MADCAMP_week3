@@ -61,5 +61,9 @@ dependencies {
     implementation("com.kakao.sdk:v2-navi:2.20.6") // 카카오내비 API 모듈
     implementation("com.kakao.sdk:v2-cert:2.20.6") // 카카오톡 인증 서비스 API 모듈
 
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+
+
 
 }
