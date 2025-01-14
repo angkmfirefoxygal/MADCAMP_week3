@@ -1,4 +1,4 @@
-package com.posetrackerdemo.ui.tab2
+package com.posetrackerdemo.ui.my
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.posetrackerdemo.R
 
-class Tab2Fragment:Fragment() {
+class MyFragment : Fragment() {
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Fragment 레이아웃을 inflate
-        return inflater.inflate(R.layout.fragment_tab2, container, false)
+        return inflater.inflate(R.layout.fragment_my, container, false)
     }
 }

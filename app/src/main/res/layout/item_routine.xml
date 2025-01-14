@@ -1,0 +1,61 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/routineImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_sample_image"
+        android:scaleType="centerCrop"
+        android:layout_marginEnd="8dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/routineDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2024/12/31"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/routineDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30분, 운동 강도: 상"
+            android:textSize="14sp"
+            android:textColor="#808080" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/routineTag1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:padding="4dp"
+            android:text="스쿼트"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/routineTag2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="플랭크"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>

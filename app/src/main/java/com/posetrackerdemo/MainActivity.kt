@@ -1,41 +1,40 @@
 package com.posetrackerdemo
 
-
-
+import CreateRoutineFragment
+import PastRoutinesFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
-
-
-
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.posetrackerdemo.ui.home.HomeFragment
+import com.posetrackerdemo.ui.my.MyFragment
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewPager = findViewById(R.id.viewPager)
-        tabLayout = findViewById(R.id.tabLayout)
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
 
-        // ViewPager Adapter 설정
-        val adapter = ViewPagerAdapter(this)
-        viewPager.adapter = adapter
+        // 기본 Fragment 설정
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, HomeFragment())
+            .commit()
 
-        // TabLayout과 ViewPager 연결
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = when (position) {
-                0 -> "Home"
-                1 -> "Tab1"
-                2 -> "Tab2"
-                3 -> "Tab3"
-                else -> null
+        // 네비게이션 아이템 선택 이벤트 처리
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            val fragment: Fragment = when (item.itemId) {
+                R.id.nav_home -> HomeFragment()
+                R.id.nav_routines -> PastRoutinesFragment()
+                R.id.nav_create_routine -> CreateRoutineFragment() // Tab2를 CreateRoutineFragment로 변경
+                R.id.nav_tab3 -> MyFragment()
+                else -> HomeFragment()
             }
-        }.attach()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit()
+            true
+        }
     }
 }
-
