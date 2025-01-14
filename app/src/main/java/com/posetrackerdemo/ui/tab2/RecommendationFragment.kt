@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.posetrackerdemo.R
@@ -22,7 +22,7 @@ class RecommendationFragment : Fragment() {
 
         // Initialize RecyclerView
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // Set to 2 columns
         recyclerView.adapter = RecommendationAdapter(getRecommendations()) // Add your adapter and data
 
         // Handle "운동 시작하기" button
@@ -44,5 +44,4 @@ class RecommendationFragment : Fragment() {
             Exercise("플랭크", 40, R.drawable.plank)
         )
     }
-
 }

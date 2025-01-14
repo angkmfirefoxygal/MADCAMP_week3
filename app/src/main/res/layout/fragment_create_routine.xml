@@ -88,6 +88,14 @@
             app:chipBackgroundColor="@color/chip_background_selector"
             android:textColor="@color/chip_text_selector" />
     </com.google.android.material.chip.ChipGroup>
+    <!-- Selected Information -->
+    <TextView
+        android:id="@+id/selectedExercisesText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="선택한 운동: "
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
 
     <!-- Difficulty Level Selection -->
     <TextView
@@ -113,20 +121,14 @@
         android:layout_marginBottom="16dp"
         android:textSize="14sp" />
 
-    <!-- Selected Information -->
-    <TextView
-        android:id="@+id/selectedExercisesText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="선택한 운동: "
-        android:textSize="14sp"
-        android:layout_marginBottom="8dp" />
-
     <!-- Create Routine Button -->
     <Button
         android:id="@+id/createRoutineButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="루틴 생성"
-        android:background="@drawable/rounded_button_background" />
+        android:backgroundTint="#FFF2F1"
+        android:textColor="#333333"
+        android:textStyle="bold"
+        android:layout_marginTop="120dp"/>
 </LinearLayout>
