@@ -19,7 +19,7 @@ import androidx.core.view.WindowInsetsCompat
 import org.json.JSONException
 import org.json.JSONObject
 
-
+/*
 /** Define the Javascript bridge interface to the Webview */
 class WebviewBridgeInterface(private val mContext: Context, private val textView: TextView) {
 
@@ -60,14 +60,14 @@ class MyWebChromeClient(private val mContext: AppCompatActivity) : WebChromeClie
         }
     }
 }
-
+*/
 /** Handle main activity :
  * - Display Webview,
  * - Set JS bridge,
  * - Set chrome permission intercepter from Webview
  * - Ask for Camera permission before navigating to API
  * - */
-class SquatTracker : AppCompatActivity(){
+class PlankTracker : AppCompatActivity(){
 
     // properties
     // API request your token provided on our dashboard on posetracker.com (It's free <3)
@@ -75,7 +75,7 @@ class SquatTracker : AppCompatActivity(){
     // Below is the main url to reach our API
     var POSETRACKER_API_URL : String = "https://app.posetracker.com/pose_tracker/tracking"
     // Our API request the exercise you want to track and count
-    var exercise : String = "face-squat"
+    var exercise : String = "face_plank"
     // Our API request the difficulty of the exercise (by default it's set to normal)
     var difficulty : String = "easy"
     // You can request API to display user skeleton or not (by default it's set to true)
