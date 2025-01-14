@@ -1,12 +1,11 @@
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.slider.Slider
@@ -14,77 +13,71 @@ import com.posetrackerdemo.R
 
 class CreateRoutineFragment : Fragment() {
 
-    private lateinit var viewModel: CreateRoutineViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_create_routine, container, false)
-        viewModel = ViewModelProvider(this).get(CreateRoutineViewModel::class.java)
 
-        val chipGroup: ChipGroup = view.findViewById(R.id.chipGroupExercises)
-        val selectedExercisesText: TextView = view.findViewById(R.id.selectedExercisesText)
-        val selectedDifficultyText: TextView = view.findViewById(R.id.selectedDifficultyText)
-        val createRoutineButton: View = view.findViewById(R.id.createRoutineButton)
-        val difficultySlider: Slider = view.findViewById(R.id.difficultySlider)
+        // UI 요소 초기화
+        val chipGroup = view.findViewById<ChipGroup>(R.id.chipGroupExercises)
+        val difficultySlider = view.findViewById<Slider>(R.id.difficultySlider)
+        val createRoutineButton = view.findViewById<Button>(R.id.createRoutineButton)
 
-        // Update chips selection
-        chipGroup.setOnCheckedChangeListener { group, checkedId ->
+        // Log: UI 요소가 초기화되었는지 확인
+        Log.d("CreateRoutineFragment", "chipGroup initialized: $chipGroup")
+        Log.d("CreateRoutineFragment", "difficultySlider initialized: $difficultySlider")
+        Log.d("CreateRoutineFragment", "createRoutineButton initialized: $createRoutineButton")
+
+        createRoutineButton.setOnClickListener {
+            Log.d("CreateRoutineFragment", "Create Routine Button Clicked")
+
             val selectedExercises = mutableListOf<String>()
-            for (i in 0 until group.childCount) {
-                val chip = group.getChildAt(i) as Chip
+            for (i in 0 until chipGroup.childCount) {
+                val chip = chipGroup.getChildAt(i) as Chip
                 if (chip.isChecked) {
                     selectedExercises.add(chip.text.toString())
                 }
             }
-            viewModel.setSelectedExercises(selectedExercises)
-        }
 
-        // Observe changes in exercise selection
-        viewModel.selectedExercises.observe(viewLifecycleOwner) { exercises ->
-            selectedExercisesText.text = "선택한 운동: ${exercises.joinToString(", ")}"
-        }
+            // Log: 선택된 운동 확인
+            Log.d("CreateRoutineFragment", "Selected Exercises: $selectedExercises")
 
-        // Difficulty slider change listener
-        difficultySlider.addOnChangeListener { _, value, _ ->
-            val difficulty = when (value.toInt()) {
+            val difficulty = when (difficultySlider.value.toInt()) {
                 0 -> "하"
                 1 -> "중"
                 2 -> "상"
                 else -> "중"
             }
-            viewModel.setSelectedDifficulty(difficulty)
-        }
 
-        // Observe difficulty level changes
-        viewModel.selectedDifficulty.observe(viewLifecycleOwner) { difficulty ->
-            selectedDifficultyText.text = "선택한 강도: $difficulty"
-        }
+            // Log: 선택된 강도 확인
+            Log.d("CreateRoutineFragment", "Selected Difficulty: $difficulty")
 
-        // Handle routine creation
-        createRoutineButton.setOnClickListener {
-            val fragment = RecommendationFragment()
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, fragment) // Ensure R.id.fragmentContainer matches your container ID
-                .addToBackStack(null) // This ensures you can go back to the CreateRoutineFragment
-                .commit()
-        }
+            if (selectedExercises.isEmpty()) {
+                Toast.makeText(requireContext(), "운동을 선택해주세요!", Toast.LENGTH_SHORT).show()
+                Log.d("CreateRoutineFragment", "No exercises selected, showing Toast")
+            } else {
+                // 데이터 전달
+                val bundle = Bundle()
+                bundle.putStringArrayList("selectedExercises", ArrayList(selectedExercises))
+                bundle.putString("difficulty", difficulty)
 
+                val recommendationFragment = RecommendationFragment()
+                recommendationFragment.arguments = bundle
+
+                // Log: Fragment 전환 준비
+                Log.d("CreateRoutineFragment", "Switching to RecommendationFragment with data")
+
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, recommendationFragment)
+                    .addToBackStack(null)
+                    .commit()
+
+                // Log: Fragment 전환 완료
+                Log.d("CreateRoutineFragment", "Fragment switched successfully")
+            }
+        }
 
         return view
-    }
-}
-
-class CreateRoutineViewModel : ViewModel() {
-    val selectedExercises = MutableLiveData<List<String>>()
-    val selectedDifficulty = MutableLiveData<String>()
-
-    fun setSelectedExercises(exercises: List<String>) {
-        selectedExercises.value = exercises
-    }
-
-    fun setSelectedDifficulty(difficulty: String) {
-        selectedDifficulty.value = difficulty
     }
 }
