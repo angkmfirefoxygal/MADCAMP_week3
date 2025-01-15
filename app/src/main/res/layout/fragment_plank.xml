@@ -8,7 +8,8 @@
         android:id="@+id/main"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp">
 
         <!-- 상단 이미지와 텍스트 -->
         <LinearLayout
@@ -17,7 +18,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="5dp"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            >
 
             <!-- 런지 사진 -->
             <ImageView
@@ -34,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Plank Exercise"
-                android:textSize="18sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="11dp" />
@@ -67,8 +69,10 @@
                 android:layout_weight="1"
                 android:breakStrategy="simple"
                 android:ellipsize="none"
+                android:textSize="25sp"
                 android:singleLine="false"
-                android:text="Text: API Results" />
+                android:text="Text: API Results"
+                android:layout_marginLeft="5dp"/>
 
             <!-- Button Refresh -->
             <Button

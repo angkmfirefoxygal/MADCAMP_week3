@@ -8,7 +8,8 @@
         android:id="@+id/main"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp">
 
         <!-- 상단 이미지와 텍스트 -->
         <LinearLayout
@@ -68,7 +69,9 @@
                 android:breakStrategy="simple"
                 android:ellipsize="none"
                 android:singleLine="false"
-                android:text="Text: API Results" />
+                android:text="Text: API Results"
+                android:textSize="25sp"
+                android:layout_marginLeft="5dp"/>
 
             <!-- Button Refresh -->
             <Button
