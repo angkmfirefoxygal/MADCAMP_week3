@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.posetrackerdemo.R
-
+import com.posetrackerdemo.SquatTracker
 
 
 class HomeFragment : Fragment() {

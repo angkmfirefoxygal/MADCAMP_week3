@@ -1,34 +1,40 @@
-package com.posetrackerdemo
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.posetrackerdemo.ui.tab2.Exercise
+import com.posetrackerdemo.R
 
-class RecommendationAdapter(private val exercises: List<Exercise>) :
-    RecyclerView.Adapter<RecommendationAdapter.ExerciseViewHolder>() {
+class RecommendationAdapter(private val routine: List<String>) :
+    RecyclerView.Adapter<RecommendationAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val exerciseIcon: ImageView = view.findViewById(R.id.exerciseIcon)
+        val exerciseText: TextView = view.findViewById(R.id.exerciseText)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_exercise, parent, false)
-        return ExerciseViewHolder(view)
+            .inflate(R.layout.recommendation_routine_item, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
-        val exercise = exercises[position]
-        holder.exerciseName.text = exercise.name
-        holder.exerciseCount.text = "${exercise.count}회"
-        holder.exerciseImage.setImageResource(exercise.imageResId)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val exercise = routine[position]
+
+        // 텍스트 설정
+        holder.exerciseText.text = exercise
+
+        // 아이콘 설정
+        when {
+            exercise.contains("스쿼트") -> holder.exerciseIcon.setImageResource(R.drawable.squat)
+            exercise.contains("푸쉬업") -> holder.exerciseIcon.setImageResource(R.drawable.pushup)
+            exercise.contains("플랭크") -> holder.exerciseIcon.setImageResource(R.drawable.plank)
+            exercise.contains("런지") -> holder.exerciseIcon.setImageResource(R.drawable.lunge)
+            else -> holder.exerciseIcon.setImageResource(R.drawable.ic_exercise)
+        }
     }
 
-    override fun getItemCount(): Int = exercises.size
-
-    class ExerciseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val exerciseName: TextView = view.findViewById(R.id.exerciseName)
-        val exerciseCount: TextView = view.findViewById(R.id.exerciseCount)
-        val exerciseImage: ImageView = view.findViewById(R.id.exerciseImage)
-    }
+    override fun getItemCount(): Int = routine.size
 }
