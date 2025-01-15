@@ -10,11 +10,11 @@
     <!-- 로고 이미지 -->
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:src="@drawable/pingdumbell_logo"
         android:contentDescription="핑크덤벨 로고"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="5dp"
         android:scaleType="fitCenter" />
 
     <!-- ID 입력 -->
