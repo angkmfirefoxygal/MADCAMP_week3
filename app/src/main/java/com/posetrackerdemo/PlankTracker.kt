@@ -21,7 +21,7 @@ import org.json.JSONObject
 
 
 /** Define the Javascript bridge interface to the Webview */
-class WebviewBridgeInterface(private val mContext: Context, private val textView: TextView) {
+class WebviewBridgeInterface2(private val mContext: Context, private val textView: TextView) {
 
     /** Android bridge function to be called from JS using "Android.androidBridgeInterface(jsonStr)" */
     @JavascriptInterface
@@ -49,7 +49,7 @@ class WebviewBridgeInterface(private val mContext: Context, private val textView
 
 
 /** Define a WebChromeClient to handle VIDEO_CAPTURE permission from the webview */
-class MyWebChromeClient(private val mContext: AppCompatActivity) : WebChromeClient() {
+class MyWebChromeClient2(private val mContext: AppCompatActivity) : WebChromeClient() {
     override fun onPermissionRequest(request: PermissionRequest?) {
         if(request != null) {
             for( resource in request.resources) {
@@ -67,7 +67,7 @@ class MyWebChromeClient(private val mContext: AppCompatActivity) : WebChromeClie
  * - Set chrome permission intercepter from Webview
  * - Ask for Camera permission before navigating to API
  * - */
-class SquatTracker : AppCompatActivity(){
+class PlankTracker : AppCompatActivity(){
 
     // properties
     // API request your token provided on our dashboard on posetracker.com (It's free <3)
@@ -75,7 +75,7 @@ class SquatTracker : AppCompatActivity(){
     // Below is the main url to reach our API
     var POSETRACKER_API_URL : String = "https://app.posetracker.com/pose_tracker/tracking"
     // Our API request the exercise you want to track and count
-    var exercise : String = "squat"
+    var exercise : String = "face_plank"
     // Our API request the difficulty of the exercise (by default it's set to normal)
     var difficulty : String = "easy"
     // You can request API to display user skeleton or not (by default it's set to true)
@@ -126,14 +126,14 @@ class SquatTracker : AppCompatActivity(){
 
         // init webClient and JS interface needed to retrieve data sent by the API
         webView.webViewClient = webviewClient
-        webView.addJavascriptInterface(WebviewBridgeInterface(this, textApiResults), "Android")
+        webView.addJavascriptInterface(WebviewBridgeInterface2(this, textApiResults), "Android")
 
         // activate Javascript options in webview
         webView.settings.javaScriptEnabled = true
         webView.settings.mediaPlaybackRequiresUserGesture = false
         webView.settings.domStorageEnabled = true
         webView.settings.javaScriptCanOpenWindowsAutomatically = true
-        webView.setWebChromeClient(MyWebChromeClient(this))
+        webView.setWebChromeClient(MyWebChromeClient2(this))
 
         // build API full URL
         //var url = "${POSETRACKER_API_URL}?token=${API_KEY}&exercise=${exercise}&difficulty=${difficulty}&skeleton=${skeleton}&width=${width}&height=${height}"

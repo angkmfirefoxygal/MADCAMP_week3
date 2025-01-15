@@ -130,16 +130,16 @@
             android:layout_marginBottom="16dp"
             android:textSize="14sp" />
 
-        <!-- Create Routine Button -->
-        <Button
-            android:id="@+id/createRoutineButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="루틴 생성"
-            android:backgroundTint="#FFF2F1"
-            android:textColor="#333333"
-            android:textStyle="bold"
-            android:layout_marginTop="120dp" />
+    <!-- Create Routine Button -->
+    <Button
+        android:id="@+id/createRoutineButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="루틴 생성"
+        android:backgroundTint="#FFF2F1"
+        android:textColor="#333333"
+        android:textStyle="bold"
+        android:layout_marginTop="120dp"/>
+</LinearLayout>
 
-    </LinearLayout>
 </FrameLayout>

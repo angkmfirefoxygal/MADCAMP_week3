@@ -31,10 +31,11 @@
                 android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="물입캠프"
+                android:text="김문원"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="4dp" />
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"/>
 
             <TextView
                 android:id="@+id/userDetails"
