@@ -75,7 +75,7 @@ class PushupTracker : AppCompatActivity(){
     // Below is the main url to reach our API
     var POSETRACKER_API_URL : String = "https://app.posetracker.com/pose_tracker/tracking"
     // Our API request the exercise you want to track and count
-    var exercise : String = "face_squat"
+    var exercise : String = "face_pushup"
     // Our API request the difficulty of the exercise (by default it's set to normal)
     var difficulty : String = "easy"
     // You can request API to display user skeleton or not (by default it's set to true)
