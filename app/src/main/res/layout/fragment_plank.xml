@@ -10,6 +10,36 @@
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
+        <!-- 상단 이미지와 텍스트 -->
+        <LinearLayout
+            android:id="@+id/topLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:gravity="center_horizontal">
+
+            <!-- 런지 사진 -->
+            <ImageView
+                android:id="@+id/imgPlank"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/plank"
+                android:contentDescription="Lunge Image"
+                android:scaleType="fitCenter" />
+
+            <!-- 텍스트 -->
+            <TextView
+                android:id="@+id/tvLungeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plank Exercise"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="11dp" />
+        </LinearLayout>
+
         <!-- WebView -->
         <WebView
             android:id="@+id/webView"
