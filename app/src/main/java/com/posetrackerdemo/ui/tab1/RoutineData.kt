@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-data class RoutineData(val date: String, val duration: String, val intensity: String, val tags: List<String>)
+data class RoutineData(val date: String, val duration: String, val intensity: String, val tags: List<String>,val imageResId:Int)
 
 class RoutinesAdapter(private val routines: List<RoutineData>) :
     RecyclerView.Adapter<RoutinesAdapter.RoutineViewHolder>() {

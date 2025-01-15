@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.posetrackerdemo.PushupTracker
 import com.posetrackerdemo.R
+import com.posetrackerdemo.SquatTracker
 
 
 class SquatFragment : Fragment() {
@@ -16,7 +17,7 @@ class SquatFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val intent = Intent(requireContext(), PushupTracker::class.java)
+        val intent = Intent(requireContext(), SquatTracker::class.java)
         startActivity(intent)
         return TODO("Provide the return value")
     }

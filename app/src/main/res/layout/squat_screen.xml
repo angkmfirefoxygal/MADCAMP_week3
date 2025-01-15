@@ -3,43 +3,45 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragmentContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="5dp">
 
         <!-- Webview -->
         <WebView
             android:id="@+id/webView"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_weight="3" />
+            android:layout_height="30dp"
+            android:layout_weight="2" />
 
         <!-- Bottom area -->
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:orientation="vertical"
-            android:gravity="center"
-            android:padding="5dp">
+            android:gravity="center">
 
             <!-- Text Area -->
             <TextView
                 android:id="@+id/textApiResults"
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:breakStrategy="simple"
                 android:ellipsize="none"
+                android:padding="10dp"
                 android:singleLine="false"
-                android:text="Text : API Results" />
+                android:text="Text : API Results"
+                android:textSize="26dp" />
 
             <!-- Button Refresh -->
             <Button

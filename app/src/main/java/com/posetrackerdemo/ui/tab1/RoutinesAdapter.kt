@@ -10,7 +10,8 @@ data class RoutineData(
     val date: String,
     val duration: String,
     val intensity: String,
-    val tags: List<String>
+    val tags: List<String>,
+    val imageResId:Int
 )
 
 class RoutinesAdapter(private val routines: List<RoutineData>) :
@@ -26,7 +27,7 @@ class RoutinesAdapter(private val routines: List<RoutineData>) :
         val routine = routines[position]
         holder.routineDate.text = routine.date
         holder.routineDetails.text = "${routine.duration}, 운동 강도: ${routine.intensity}"
-        holder.routineImage.setImageResource(R.drawable.ic_sample_image) // 이미지 설정
+        holder.routineImage.setImageResource(routine.imageResId) // 이미지 설정
 
         // 태그 설정
         holder.routineTag1.text = routine.tags.getOrNull(0) ?: ""
@@ -35,6 +36,7 @@ class RoutinesAdapter(private val routines: List<RoutineData>) :
         holder.routineTag2.text = routine.tags.getOrNull(1) ?: ""
         holder.routineTag2.visibility = if (routine.tags.size > 1) View.VISIBLE else View.GONE
     }
+
 
     override fun getItemCount(): Int = routines.size
 

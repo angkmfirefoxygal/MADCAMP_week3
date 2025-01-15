@@ -11,12 +11,13 @@ import com.posetrackerdemo.R
 class PastRoutinesFragment : Fragment() {
 
     private val routines = listOf(
-        RoutineData("2024/12/31", "30분", "상", listOf("스쿼트", "플랭크")),
-        RoutineData("2024/12/30", "25분", "중", listOf("런지", "푸쉬업")),
-        RoutineData("2024/12/29", "20분", "하", listOf("플랭크")),
-        RoutineData("2024/12/28", "30분", "상", listOf("스쿼트", "런지")),
-        RoutineData("2024/12/27", "15분", "하", listOf("플랭크", "스쿼트"))
+        RoutineData("2024/12/31", "30분", "상", listOf("스쿼트", "플랭크"), R.drawable.profile_image1),
+        RoutineData("2024/12/30", "25분", "중", listOf("런지", "푸쉬업"), R.drawable.profile_image2),
+        RoutineData("2024/12/29", "20분", "하", listOf("플랭크"), R.drawable.profile_image3),
+        RoutineData("2024/12/28", "30분", "상", listOf("스쿼트", "런지"), R.drawable.profile_image4),
+        RoutineData("2024/12/27", "15분", "하", listOf("플랭크", "스쿼트"), R.drawable.profile_image5)
     )
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

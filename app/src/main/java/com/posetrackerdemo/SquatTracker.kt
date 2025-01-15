@@ -71,7 +71,7 @@ class SquatTracker : AppCompatActivity(){
 
     // properties
     // API request your token provided on our dashboard on posetracker.com (It's free <3)
-    var API_KEY: String = "75d3c7f5-0533-429c-a137-2ae8a47dd10c"
+    var API_KEY: String = "745374e1-db25-4a90-81dc-c0aadb9c41d4"
     // Below is the main url to reach our API
     var POSETRACKER_API_URL : String = "https://app.posetracker.com/pose_tracker/tracking"
     // Our API request the exercise you want to track and count
