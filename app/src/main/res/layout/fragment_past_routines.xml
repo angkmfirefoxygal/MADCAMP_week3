@@ -10,7 +10,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00님, 오늘도 운동을 도전해볼까요?"
+        android:text="문원님, 오늘도 운동을 도전해볼까요?"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginBottom="8dp" />
