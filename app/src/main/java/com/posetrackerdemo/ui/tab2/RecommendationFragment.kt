@@ -1,4 +1,3 @@
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +6,17 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.posetrackerdemo.R
 import com.posetrackerdemo.ui.home.LungeFragment
 import com.posetrackerdemo.ui.home.PlankFragment
 import com.posetrackerdemo.ui.home.PushupFragment
 import com.posetrackerdemo.ui.home.SquatFragment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class RecommendationFragment : Fragment() {
@@ -26,7 +31,7 @@ class RecommendationFragment : Fragment() {
 
 
         // UI 요소 가져오기
-        val routineTextView = view.findViewById<TextView>(R.id.routineTextView)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.routineRecyclerView)
         val startButton = view.findViewById<Button>(R.id.startButton)
 
         // 전달받은 데이터
@@ -41,14 +46,15 @@ class RecommendationFragment : Fragment() {
         // 운동 루틴 생성
         routine = generateRoutine(selectedExercises, difficulty)
 
-        // 생성된 루틴을 TextView에 표시
-        routineTextView.text = routine.joinToString("\n")
+        // RecyclerView 설정
+        val adapter = RecommendationAdapter(routine)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = adapter
 
         // 시작 버튼 클릭 이벤트
         startButton.setOnClickListener {
             startRoutine(routine)
         }
-
 
         return view
     }
@@ -81,24 +87,39 @@ class RecommendationFragment : Fragment() {
         return routine
     }
 
+
+
     private fun startRoutine(routine: List<String>) {
         if (routine.isEmpty()) return
 
-        val fragmentTransaction = parentFragmentManager.beginTransaction()
-        for (step in routine) {
-            val fragment = when {
-                step.contains("스쿼트") -> SquatFragment()
-                step.contains("푸쉬업") -> PushupFragment()
-                step.contains("플랭크") -> PlankFragment()
-                step.contains("런지") -> LungeFragment()
-                else -> null
+        val fragmentManager = parentFragmentManager ?: return
+
+
+        // Launch a coroutine on the Main thread for UI updates
+        CoroutineScope(Dispatchers.Main).launch {
+            for (step in routine) {
+                val fragment = when {
+                    step.contains("스쿼트") -> SquatFragment()
+                    step.contains("푸쉬업") -> PushupFragment()
+                    step.contains("플랭크") -> PlankFragment()
+                    step.contains("런지") -> LungeFragment()
+                    else -> null
+                }
+
+                fragment?.let {
+                    fragmentManager.beginTransaction()
+                        .setCustomAnimations(
+                            android.R.anim.fade_in, // Enter animation
+                            android.R.anim.fade_out // Exit animation
+                        )
+                        .replace(R.id.fragmentContainer, it)
+                        .commit()
+
+                    // Wait for 10 seconds before transitioning to the next fragment
+                    delay(30000L) // 10 seconds
+                }
             }
 
-            fragment?.let {
-                fragmentTransaction.replace(R.id.fragmentContainer, it)
-                fragmentTransaction.addToBackStack(null) // 뒤로가기 지원
-            }
         }
-        fragmentTransaction.commit()
     }
 }
